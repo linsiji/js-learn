@@ -39,7 +39,7 @@ var server = http.createServer(function(req, res) {
               res.setHeader("Expires", expires.toUTCString());
               res.setHeader("Cache-Control", "max-age=" + config.Expires.maxAge);
           }
-          if (req.headers['If-Modified-Since'] && lastModified == req.headers['If-Modified-Since']) {
+          if (req.headers[ifModifiedSince] && lastModified == req.headers[ifModifiedSince]) {
             res.writeHead(304, "Not Modified");
             res.end();
           } else {
